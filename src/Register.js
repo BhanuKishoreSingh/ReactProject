@@ -5,6 +5,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Login from './Login';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
+
 class Register extends Component {
   constructor(props){
     super(props);
@@ -91,4 +93,4 @@ class Register extends Component {
 const style = {
   margin: 15,
 };
-export default Register;
+export default withRouter(Register);
