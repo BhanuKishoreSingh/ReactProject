@@ -8,7 +8,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import green from '@material-ui/core/colors/green';
 import Feedback from './Feedback';
-import EnhancedTable from './Careers';
+import SearchCareers from './SearchCareers';
 
 function TabContainer(props) {
   const { children, dir } = props;
@@ -78,7 +78,7 @@ class Landing extends React.Component {
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={this.state.value}
           onChangeIndex={this.handleChangeIndex}>
-          <TabContainer dir={theme.direction}><EnhancedTable /></TabContainer>
+          <TabContainer dir={theme.direction}><SearchCareers /></TabContainer>
           <TabContainer dir={theme.direction}>My Jobs</TabContainer>
           <TabContainer dir={theme.direction}><Feedback /></TabContainer>
         </SwipeableViews>

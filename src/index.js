@@ -6,7 +6,6 @@ import Login from './Login';
 import Register from './Register';
 import Landing from './Landing';
 import Header from './Header';
-import Careers from './Careers';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -16,7 +15,6 @@ const Main = () => (
         <Route exact path='/' component={Login}/>
         <Route path='/register' component={Register}/>
         <Route path='/landing' component={Landing}/>
-        <Route path='/careers' component={Careers}/>
       </Switch>
     </main>
 )

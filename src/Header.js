@@ -49,10 +49,9 @@ class Header extends React.Component {
               <Typography variant="title" color="inherit" className={classes.flex}>
                 {this.state.title}
               </Typography>
-              { this.state.loginStatus ? <Button className={classes.button}>Feedback</Button>
-                : null }
+              { this.state.loginStatus ?
               <Button className={classes.button} onClick={this.toggleLoginStatus}>Logout</Button>
-
+              : null }
             </Toolbar>
           </AppBar>
         </div>
