@@ -1,27 +1,30 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 //import Login from './Login';
 //import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
-const styles = {
-  root: {
-    flexGrow: 1,
-  },
-  flex: {
-    flex: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-};
+const styles = theme => ({
+  container: {
+      display: 'flex',
+      flexWrap: 'wrap',
+    },
+    register: {
+      height: 360,
+    },
+    textField: {
+      marginLeft: theme.spacing.unit,
+      marginRight: theme.spacing.unit,
+      width: 200,
+    },
+    control: {
+      padding: theme.spacing.unit * 2,
+    }
+});
 
 class Register extends React.Component {
   constructor(props){
@@ -33,6 +36,10 @@ class Register extends React.Component {
       password:''
     }
     this.handleClick = this.handleClick.bind(this);
+    this.handleFnameChange = this.handleFnameChange.bind(this);
+    this.handleLnameChange = this.handleLnameChange.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
 
   handleClick() {
@@ -40,44 +47,74 @@ class Register extends React.Component {
     this.props.history.push('/');
   }
 
+  handleFnameChange(event) {
+    this.setState({
+      first_name: event.target.value,
+    });
+  }
+
+  handleLnameChange(event) {
+    this.setState({
+      last_name: event.target.value,
+    });
+  }
+
+  handleEmailChange(event) {
+    this.setState({
+      email: event.target.value,
+    });
+  }
+
+  handlePasswordChange(event) {
+    this.setState({
+      password: event.target.value,
+    });
+  }
+
   render() {
     const { classes } = this.props;
 
     return (
-      <div>
-        <div className={classes.root}>
-          <AppBar position="static">
-            <Toolbar>
-              <Typography variant="title" color="inherit" className={classes.flex}>
-                Register
-              </Typography>
-            </Toolbar>
-          </AppBar>
-        </div>
-        <div>
-             <TextField
-              className={classes.textField} label="Name"
-               onChange = {(event,newValue) => this.setState({first_name:newValue})}
-               />
-             <br/>
-             <TextField
-               className={classes.textField} label="Name"
-               onChange = {(event,newValue) => this.setState({last_name:newValue})}
-               />
-             <br/>
-             <TextField
-               className={classes.textField} label="Name"
-               onChange = {(event,newValue) => this.setState({email:newValue})}
-               />
-             <br/>
-             <TextField
-              className={classes.textField} label="Password"
-               onChange = {(event,newValue) => this.setState({password:newValue})}
-               />
-             <br/>
-             <Button variant="contained" className={classes.button} onClick={this.handleClick}>Submit</Button>
-        </div>
-      </div>
+      <Grid container className={classes.root}>
+        <Grid container
+          spacing={16}
+          className={classes.register}
+          alignItems='center'
+          justify='center'
+          direction='column'>
+          <form className={classes.container} noValidate autoComplete="off">
+            <Grid container direction="column" spacing={16}>
+              <Grid item>
+               <TextField
+                className={classes.textField} label="FirstName"
+                value={this.state.first_name}
+                onChange={this.handleFnameChange} />
+              </Grid>
+              <Grid item>
+               <TextField
+                 className={classes.textField} label="LastName"
+                 value={this.state.last_name}
+                 onChange={this.handleLnameChange} />
+              </Grid>
+              <Grid item>
+               <TextField
+                 className={classes.textField} label="Email"
+                 value={this.state.email}
+                 onChange={this.handleEmailChange} />
+              </Grid>
+              <Grid item>
+               <TextField
+                className={classes.textField} label="Password"
+                value={this.state.password}
+                onChange={this.handlePasswordChange} />
+              </Grid>
+              <Grid item>
+               <Button variant="contained" className={classes.button} onClick={this.handleClick}>Submit</Button>
+              </Grid>
+            </Grid>
+          </form>
+        </Grid>
+      </Grid>
     );
   }
 }

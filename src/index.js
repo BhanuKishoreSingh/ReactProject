@@ -6,6 +6,7 @@ import Login from './Login';
 import Register from './Register';
 import Landing from './Landing';
 import Feedback from './Feedback';
+import Header from './Header';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -21,6 +22,9 @@ const Main = () => (
 )
 
 ReactDOM.render(<Router>
-                  <Main />
+                  <div>
+                    <Header />
+                    <Main />
+                  </div>
                 </Router>, document.getElementById('root'));
 registerServiceWorker();

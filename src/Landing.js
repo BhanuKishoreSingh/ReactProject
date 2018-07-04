@@ -1,23 +1,27 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 
-const styles = {
-  root: {
-    flexGrow: 1,
-  },
-  flex: {
-    flex: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-};
+const styles = theme => ({
+  container: {
+      display: 'flex',
+      flexWrap: 'wrap',
+    },
+    landing: {
+      height: '100%',
+    },
+    textField: {
+      marginLeft: theme.spacing.unit,
+      marginRight: theme.spacing.unit,
+      width: 200,
+    },
+    control: {
+      padding: theme.spacing.unit * 2,
+    }
+});
 
 class Landing extends React.Component {
   constructor(props) {
@@ -29,18 +33,16 @@ class Landing extends React.Component {
   render() {
     const { classes } = this.props;
     return(
-      <div>
-        <div className={classes.root}>
-          <AppBar position="static">
-            <Toolbar>
-              <Typography variant="title" color="inherit" className={classes.flex}>
-                Title
-              </Typography>
-            </Toolbar>
-          </AppBar>
-        </div>
-        <h2>This is the landing page</h2>
-      </div>
+      <Grid container className={classes.root}>
+        <Grid container
+          spacing={16}
+          className={classes.register}
+          alignItems='center'
+          justify='center'
+          direction='column'>
+          <h2>This is the landing page</h2>
+        </Grid>
+      </Grid>
     );
   }
 }
