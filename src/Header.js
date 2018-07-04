@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 
 const styles = {
@@ -19,16 +20,22 @@ const styles = {
   },
 };
 
+
 class Header extends React.Component {
   constructor(props) {
       super(props);
-      this.state = { title: "Reactathon" };
+      this.state = { title: "Reactathon", loginStatus: false };
 
       this.handleChange = this.handleChange.bind(this);
+      this.toggleLoginStatus = this.toggleLoginStatus.bind(this);
   }
 
   handleChange(event) {
     this.setState({title: event.target.value});
+  }
+
+  toggleLoginStatus(event) {
+    this.setState({loginStatus: !this.state.loginStatus});
   }
 
   render() {
@@ -42,6 +49,10 @@ class Header extends React.Component {
               <Typography variant="title" color="inherit" className={classes.flex}>
                 {this.state.title}
               </Typography>
+              { this.state.loginStatus ? <Button className={classes.button}>Feedback</Button>
+                : null }
+              <Button className={classes.button} onClick={this.toggleLoginStatus}>Logout</Button>
+
             </Toolbar>
           </AppBar>
         </div>
