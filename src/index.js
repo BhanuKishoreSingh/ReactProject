@@ -7,6 +7,7 @@ import Register from './Register';
 import Landing from './Landing';
 import Feedback from './Feedback';
 import Header from './Header';
+import Careers from './Careers';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -17,6 +18,7 @@ const Main = () => (
         <Route path='/register' component={Register}/>
         <Route path='/landing' component={Landing}/>
         <Route path='/feedback' component={Feedback}/>
+        <Route path='/careers' component={Careers}/>
       </Switch>
     </main>
 )
